@@ -17,9 +17,9 @@ Our oracle is based on another tool named [contractfuzzer](https://arxiv.org/ftp
 ## Securify
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
-| Securify | (Re) TOD | ... | No | |
-| Securify | (Re) Reentrancy | ... | Yes | |
-| Securify | (Re) Handled exception | ... | Yes | |
+| Securify | (Re) TOD | ... | No | ...|
+| Securify | (Re) Reentrancy | ... | Yes | ... |
+| Securify | (Re) Handled exception | ... | Yes | ... |
 | Securify | Restricted transfer | No one can transfer ether. (Ponzi) | No | Our tool is based on only one transaction. We have no idea of all the possible transactions to the smart contract. |
 
 Note 1: Securify has some vulnerable patterns for the smart contract. Its paper does not clearly tell the attacks they are doing, but it has a graph that displays attacks compared with other tools.
@@ -42,12 +42,12 @@ Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecke
 | Mythril | Type confusion ??? (Do not understand) |  | TBD | |
 | Mythril | (Re) Predictable RNG	 | Similar as timestamp dependence, except that this vulnerability contains other opcodes: timestamp, block number, coinbase and gaslimit | Yes | |
 | Mythril | (Re) TOD |  | No | |
-| Mythril | (Re) TOD |  | No | |
-| Mythril | (Re) TOD |  | No | |
-| Mythril | (Re) TOD |  | No | |
-| Mythril | (Re) TOD |  | No | |
-| Mythril | (Re) TOD |  | No | |
-| Mythril | (Re) TOD |  | No | |
+| Mythril | Information exposure	??? |  | TBD | |
+| Mythril | Complex fallback function | A too complex fallback function will cause send() and transfer() from other contracts to fail. It is one of the dos attacks we mentioned before. | TBD | |
+| Mythril | Use require() instead of assert() | Use assert() only to check against states which should be completely unreachable.	 | TBD | |
+| Mythril | Use of deprecated functions	| Use revert() instead of throw(), selfdestruct() instead of suicide(), keccak256() instead of sha3() | No | We cannot tell the originial solidity function from the trace, which only has opcode. Throw() and revert() will be translated to same opcode revert. |
+| Mythril | Detect tautologies	 | Detect comparisons that always evaluate to 'true' | No | |
+| Mythril | Call depth attack	 |  | Yes | |
 
 
 ## Vandal
@@ -58,3 +58,6 @@ Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecke
 | Vandal | Unsecured balance |  | Yes | |
 | Vandal | (Re) Destroyable contract | This kind of vulnerability belongs to unprotected functions in the Mythril. | Yes | |
 | Vandal | (Re) Use of origin |  | Yes | |
+
+## teEther
+teEther is not based on specific attacks/vulnerabilities.

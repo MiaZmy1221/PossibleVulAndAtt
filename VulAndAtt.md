@@ -49,6 +49,7 @@ Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecke
 | Mythril | Detect tautologies	 | Detect comparisons that always evaluate to 'true' | No | |
 | Mythril | Call depth attack	 |  | Yes | |
 
+Note 1: This table is from https://github.com/ConsenSys/mythril/wiki/Mythril-Detection-Capabilities.
 
 ## Vandal
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |

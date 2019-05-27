@@ -1,5 +1,6 @@
 # Possible attacks for our project
 Note 1: we have global facts files: use, value, op and so on. If some extra global facts files are needed, they will be noted.
+Note 2: Re means redundant.
 ## Oyente
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |

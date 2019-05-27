@@ -19,7 +19,7 @@ Our oracle is based on another tool named [contractfuzzer](https://arxiv.org/ftp
 | Securify | (Re) TOD | ... | No | |
 | Securify | (Re) Reentrancy | ... | Yes | |
 | Securify | (Re) Handled exception | Unchecked call return value. | Yes | |
-| Securify | Restricted transfer | No one can transfer ether. (Ponzi) | No | Our tool id based on only one transaction. We have no idea of all the possible transactions to the smart contract. |
+| Securify | Restricted transfer | No one can transfer ether. (Ponzi) | No | Our tool is based on only one transaction. We have no idea of all the possible transactions to the smart contract. |
 
 Note 1: Securify has some vulnerable patterns for the smart contract. Its paper does not clearly tell the attacks they are doing, but it has a graph that displays attacks compared with other tools.
 

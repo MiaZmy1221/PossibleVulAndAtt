@@ -19,11 +19,12 @@ Our oracle is based on another tool named [contractfuzzer](https://arxiv.org/ftp
 | ------|--------|------------ |-------| ---- |
 | Securify | (Re) TOD | ... | No | |
 | Securify | (Re) Reentrancy | ... | Yes | |
-| Securify | (Re) Handled exception | Unchecked call return value. | Yes | |
+| Securify | (Re) Handled exception | ... | Yes | |
 | Securify | Restricted transfer | No one can transfer ether. (Ponzi) | No | Our tool is based on only one transaction. We have no idea of all the possible transactions to the smart contract. |
 
 Note 1: Securify has some vulnerable patterns for the smart contract. Its paper does not clearly tell the attacks they are doing, but it has a graph that displays attacks compared with other tools.
 
+Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecked return value in Mythril and unchecked send are same.
 
 ## Mythril
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
@@ -52,7 +53,7 @@ Note 1: Securify has some vulnerable patterns for the smart contract. Its paper 
 ## Vandal
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
-| Vandal | (Re) Unchecked send | part a) of mishandled exceptions in Oyente, handled exception in Securify, unchecked return value in Mythril and unchecked send are same. | Yes | |
+| Vandal | (Re) Unchecked send |  | Yes | |
 | Vandal | (Re) Reentrancy |  | Yes | |
 | Vandal | Unsecured balance |  | Yes | |
 | Vandal | (Re) Destroyable contract | This kind of vulnerability belongs to unprotected functions in the Mythril. | Yes | |

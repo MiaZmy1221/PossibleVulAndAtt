@@ -29,7 +29,7 @@ Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecke
 ## Mythril
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
-| Mythril | Unprotected functions | a) critical functions can be called by anyone. <br> b) msg.sender is compared against an address in storage that can be written to. E.g. Parity wallet bugs. | a) Yes <br> b) Yes |  |
+| Mythril | Unprotected functions | a) critical functions can be called by anyone. <br> b) msg.sender is compared against an address in storage that can be written to. E.g. Parity wallet bugs. | a) Yes <br> b) Yes | a) CALLER JUMPI SELFDESTRUCT b) part of this can be detected since we cannot be sure that this address (from storage) can be written to (In other words, this address may can be written at the construction of the contract). CALLER JUMPI SELFDESTRUCT SLOAD. |
 | Mythril | (Re) Unchecked return value |  | Yes | |
 | Mythril | (Re) Reentrancy	|  | Yes | |
 | Mythril | Multiple sends in a single transaction	| External calls can fail accidentally or deliberately. Avoid combining multiple send() calls in a single transaction. | Yes |"CALL", "CALLCODE", "DELEGATECALL", "STATICCALL" |

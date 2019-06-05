@@ -45,8 +45,8 @@ Note 1: We can follow Vandal's oracle on those vulnerabilities.
 | Incorrect Contract | Failed send | The send always fails due to the heavy code in the receiver smart contract fallback function. | Yes | "CALL" and maybe other call opcodes |
 | Incorrect Contract | (Our 3rd direction) Integer overflow and underflow | Integer issues | Yes | "SUB", "ADD", "MUL", "CALLDATALOAD", "SSTORE"  |
 | Incorrect Contract | (Re) Transaction state dependence | Also tx.origin bug. <br> SAME AS "Use of origin" IN VANDAL. | Yes | ... |
-| Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. <br> SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) We cannot |
-| Unfair Contract | Incorrect Logic: Variable mixup and Logic error (Comparison logic error) | 1) The developer of the smart contract misuses the variables. 2) Balance should be larger than some threshold, rather than less. Then the balance can be transferred. | 1) No. <br> 2) No | 1) We cannot get variable name from the bytecode. <br> 2) We cannot tell what the correct logic is. |
+| Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) We cannot |
+| Unfair Contract | Incorrect Logic: Variable mixup and Logic error (Comparison logic error) | 1) The developer of the smart contract misuses the variables. <br> 2) Balance should be larger than some threshold, rather than less. Then the balance can be transferred. | 1) No <br> 2) No | 1) We cannot get variable name from the bytecode. <br> 2) We cannot tell what the correct logic is. |
 | Unfair Contract | Logic correct but unfair | The smart contract has some unfair code.  | No | We cannot know what the unfair code is. |
 | Miner's influence | (Re) Block state dependence: such as timestamp, block number and so on. | SAME AS "Timestamp dependence detection" IN OYENTE. | Yes | ... |
 | Miner's influence | (Re) TOD. | SAME AS "Transaction order dependence" IN OYENTE. | No | ... |

@@ -17,9 +17,9 @@ Our oracle is based on another tool named [contractfuzzer](https://arxiv.org/ftp
 ## Securify
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
-| Securify | (Re) TOD | ... | No | ...|
-| Securify | (Re) Reentrancy | ... | Yes | ... |
-| Securify | (Re) Handled exception | ... | Yes | ... |
+| Securify | (Re) TOD | SAME AS "Transaction order dependence" IN OYENTE. | No | ...|
+| Securify | (Re) Reentrancy | SAME AS "Reentrany detection" IN OYENTE. | Yes | ... |
+| Securify | (Re) Handled exception | SAME AS "Mishandled execeptions" IN OYENTE. | Yes | ... |
 | Securify | Restricted transfer | No one can transfer ether. (Ponzi) | No | Our tool is based on only one transaction. We have no idea of all the possible transactions to the smart contract. |
 
 Note 1: Securify has some vulnerable patterns for the smart contract. Its paper does not clearly tell the attacks they are doing, but it has a graph that displays attacks compared with other tools.
@@ -29,12 +29,13 @@ Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecke
 ## Vandal
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
-| Vandal | (Re) Unchecked send |  | Yes | |
-| Vandal | (Re) Reentrancy |  | Yes | |
-| Vandal | Unsecured balance |  | Yes | |
+| Vandal | (Re) Unchecked send | SAME AS "Mishandled execeptions" IN OYENTE. | Yes | ... |
+| Vandal | (Re) Reentrancy | SAME AS "Reentrany detection" IN OYENTE. | Yes | ... |
+| Vandal | Unsecured balance | The balance in the smart contract can be obtained by anyone due to some bugs, such as unmatched constructor. | Yes | "CALL", "SLOAD", "CALLER" |
 | Vandal | Destroyable contract | The suicide function can be called by anyone. | Yes | "SELFDESTRUCT", "CALLER" |
-| Vandal | (Re) Use of origin |  | Yes | |
+| Vandal | Use of origin | Opcode tx.origin contains the address of the account that made the first message call. | Yes | No particular opcode facts but need global facts. |
 
+Note 1: We can follow Vandal's oracle on those vulnerabilities. 
 
 ## Zeus
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |

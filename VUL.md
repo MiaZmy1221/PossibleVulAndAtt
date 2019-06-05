@@ -43,9 +43,9 @@ Note 1: We can follow Vandal's oracle on those vulnerabilities.
 | (1.1) Incorrect Contract | (Re) Reentrancy attack | SAME AS "Reentrany detection" IN OYENTE. | Yes | ... |
 | (1.2) Incorrect Contract | (Re) Unchecked send | SAME AS "Unchecked send" IN VANDAL. | Yes | ... |
 | (1.3) Incorrect Contract | Failed send | It is part of the Dos attack, which means the receiver always revert due to he heavy code in their fallback function. |  |  |
-| (1.4) Incorrect Contract | (Our 3rd direction) Integer overflow and underflow | Integer issues | Yes | a)  |
-| (1.5) Incorrect Contract | (Re) Transaction state dependence | Also tx.origin bug | Yes | ... |
-| (2.1) Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) |
+| (1.4) Incorrect Contract | (Our 3rd direction) Integer overflow and underflow | Integer issues | Yes | "SUB", "ADD", "MUL", "CALLDATALOAD", "SSTORE"  |
+| (1.5) Incorrect Contract | (Re) Transaction state dependence | Also tx.origin bug. <br> SAME AS "Use of origin" IN VANDAL. | Yes | ... |
+| (2.1) Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. <br> SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) |
 | (2.2) Unfair Contract | Incorrect Logic: Variable mixup and Logic error (Comparison logic error) | ... | No | ... |
 | (2.3) Unfair Contract | Logic correct but unfair | The smart contract has some  | No | ... |
 | (3.1) Miner's influence | (Re) Block state dependence: such as timestamp, block number and so on. | SAME AS "Timestamp dependence detection" IN OYENTE. | Yes | ... |
@@ -57,7 +57,7 @@ Note 1: We cannot do most of the vulnerabilities in Unfair contract part.
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
 | Scale | (Re) Suicidal Contracts| SAME AS "Destroyable contract" IN VANDAL. | Yes | ... |
-| Scale | (Re) Greedy  Contracts | The ether is frozen and have no way to release Ether after a certain execution state. SAME AS "Restricted transfer" IN SECURIFY. | No | ... |
+| Scale | (Re) Greedy  Contracts | The ether is frozen and have no way to release Ether after a certain execution state. <br> SAME AS "Restricted transfer" IN SECURIFY. | No | ... |
 | Scale | Prodigal  Contracts | Release Ether to arbitrary addresses carelessly. | Yes | "CALL", "CALLDATALOAD" |
 
 Note 1: this scale paper is what Xiaokuan mentioned [Finding The Greedy, Prodigal, and Suicidal Contracts at Scale](https://arxiv.org/pdf/1802.06038.pdf).

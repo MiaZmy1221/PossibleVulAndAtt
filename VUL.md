@@ -32,8 +32,33 @@ Note 2: Mishandled exceptions in Oyente, handled exception in Securify, unchecke
 | Vandal | (Re) Unchecked send |  | Yes | |
 | Vandal | (Re) Reentrancy |  | Yes | |
 | Vandal | Unsecured balance |  | Yes | |
-| Vandal | (Re) Destroyable contract | This kind of vulnerability belongs to unprotected functions in the Mythril. | Yes | |
+| Vandal | Destroyable contract | The suicide function can be called by anyone. | Yes | "SELFDESTRUCT", "CALLER" |
 | Vandal | (Re) Use of origin |  | Yes | |
 
-## teEther
-teEther is not based on specific attacks/vulnerabilities.
+
+## Zeus
+| Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
+| ------|--------|------------ |-------| ---- |
+| (1.1) Incorrect Contract | (Re) Reentrancy attack | ... | Yes | ... |
+| (1.2) Incorrect Contract | (Re) Unchecked send | ... | Yes | ... |
+| (1.3) Incorrect Contract | Failed send | It is part of the Dos attack, which means the receiver always revert due to he heavy code in their fallback function. |  |  |
+| (1.4) Incorrect Contract | (Our 3rd direction) Integer overflow and underflow | Integer issues | Yes | a)  |
+| (1.5) Incorrect Contract | (Re) Transaction state dependence | Also tx.origin bug | Yes | ... |
+| (2.1) Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) |
+| (2.2) Unfair Contract | Incorrect Logic: Variable mixup and Logic error (Comparison logic error) | ... | No | ... |
+| (2.3) Unfair Contract | Logic correct but unfair | The smart contract has some  | No | ... |
+| (3.1) Miner's influence | (Re) Block state dependence: such as timestamp, block number and so oN. SAME AS "Timestamp dependence detection" IN OYENTE. | ... | Yes | ... |
+| (2.2) Miner's influence | (Re) TOD. SAME AS "Transaction order dependence" IN OYENTE.| ... | No | ... |
+
+Note 1: We cannot do most of the vulnerabilities in Unfair contract part. 
+
+## Scale
+| Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
+| ------|--------|------------ |-------| ---- |
+| Scale | (Re) Suicidal Contracts| SAME AS "Destroyable contract" IN VANDAL. | Yes |  |
+| Scale | Greedy  Contracts | The ether is frozen and have no way to release Ether after a certain execution state. | No | We are based on one transaction. In order to detect this vulnerabity, we should have transactions to all the functions.  |
+| Scale | Prodigal  Contracts | Release Ether to arbitrary addresses carelessly. | Yes | "CALL", "CALLDATALOAD" |
+
+Note 1: this scale paper is what Xiaokuan mentioned [Finding The Greedy, Prodigal, and Suicidal Contracts at Scale](https://arxiv.org/pdf/1802.06038.pdf).
+
+Note 2: There is another type of smart contracts named Posthumous Contracts. It is about the killed smart contract. Although killed smart contract does not have code, they can receive ether. Thus, those ethers are wasted. 

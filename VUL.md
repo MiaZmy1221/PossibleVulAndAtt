@@ -40,16 +40,16 @@ Note 1: We can follow Vandal's oracle on those vulnerabilities.
 ## Zeus
 | Paper | Attack | Description | OKay? | If no, why? If yes, what facts? |
 | ------|--------|------------ |-------| ---- |
-| (1.1) Incorrect Contract | (Re) Reentrancy attack | SAME AS "Reentrany detection" IN OYENTE. | Yes | ... |
-| (1.2) Incorrect Contract | (Re) Unchecked send | SAME AS "Unchecked send" IN VANDAL. | Yes | ... |
-| (1.3) Incorrect Contract | Failed send | It is part of the Dos attack, which means the receiver always revert due to he heavy code in their fallback function. |  |  |
-| (1.4) Incorrect Contract | (Our 3rd direction) Integer overflow and underflow | Integer issues | Yes | "SUB", "ADD", "MUL", "CALLDATALOAD", "SSTORE"  |
-| (1.5) Incorrect Contract | (Re) Transaction state dependence | Also tx.origin bug. <br> SAME AS "Use of origin" IN VANDAL. | Yes | ... |
-| (2.1) Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. <br> SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) |
-| (2.2) Unfair Contract | Incorrect Logic: Variable mixup and Logic error (Comparison logic error) | ... | No | ... |
-| (2.3) Unfair Contract | Logic correct but unfair | The smart contract has some  | No | ... |
-| (3.1) Miner's influence | (Re) Block state dependence: such as timestamp, block number and so on. | SAME AS "Timestamp dependence detection" IN OYENTE. | Yes | ... |
-| (2.2) Miner's influence | (Re) TOD. | SAME AS "Transaction order dependence" IN OYENTE. | No | ... |
+| Incorrect Contract | (Re) Reentrancy attack | SAME AS "Reentrany detection" IN OYENTE. | Yes | ... |
+| Incorrect Contract | (Re) Unchecked send | SAME AS "Unchecked send" IN VANDAL. | Yes | ... |
+| Incorrect Contract | Failed send | The send always fails due to the heavy code in the receiver smart contract fallback function. | Yes | "CALL" and maybe other call opcodes |
+| Incorrect Contract | (Our 3rd direction) Integer overflow and underflow | Integer issues | Yes | "SUB", "ADD", "MUL", "CALLDATALOAD", "SSTORE"  |
+| Incorrect Contract | (Re) Transaction state dependence | Also tx.origin bug. <br> SAME AS "Use of origin" IN VANDAL. | Yes | ... |
+| Unfair Contract | Absence of logic: Unchecked resources | 1) (Re) Unprotected suicide function. <br> SAME AS "Destroyable contract" IN VANDAL. <br> 2) Some unfair code | 1) Yes <br> 2) No | 1) ... <br>  2) We cannot |
+| Unfair Contract | Incorrect Logic: Variable mixup and Logic error (Comparison logic error) | 1) The developer of the smart contract misuses the variables. 2) Balance should be larger than some threshold, rather than less. Then the balance can be transferred. | 1) No. <br> 2) No | 1) We cannot get variable name from the bytecode. <br> 2) We cannot tell what the correct logic is. |
+| Unfair Contract | Logic correct but unfair | The smart contract has some unfair code.  | No | We cannot know what the unfair code is. |
+| Miner's influence | (Re) Block state dependence: such as timestamp, block number and so on. | SAME AS "Timestamp dependence detection" IN OYENTE. | Yes | ... |
+| Miner's influence | (Re) TOD. | SAME AS "Transaction order dependence" IN OYENTE. | No | ... |
 
 Note 1: We cannot do most of the vulnerabilities in Unfair contract part. 
 
